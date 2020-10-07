@@ -9,15 +9,25 @@ import calculs
 class MyInterface(FloatLayout):
 
     def cliquer(self):
+        self.month = self.ids.month_cursor.value
+        self.contamination = self.ids.contamination_cursor.value
+        self.people, self.infected = calculs.inhabitants(self.month, self.contamination)
+        if self.infected > self.people:
+            self.infected = self.people
+        self.sick = int(0.75*self.infected)
+        self.healthy_carrier = int(0.25*self.infected)
+        
         with self.canvas:
             Color(1., 0, 0)
             Rectangle(pos = self.pos, size=(800,500))
 
-        month = self.ids.cursor.value
-        self.people = calculs.inhabitants(month)
         for _ in range(self.people):
             Person(self.canvas)
+        
         self.ids.reponse.text = str(self.people) + " inhabitants"
+        self.ids.sick.text = str(self.sick) + " sick"
+        self.ids.healthy_carrier.text = str(self.healthy_carrier) + " healthy carrier"
+        self.ids.infected.text = str(self.infected) + " infected"
 
 class Person(Widget):
     def __init__(self, canvas):

@@ -21,12 +21,12 @@
     Slider:
         id: month_cursor
         min: 0
-        max: 20
+        max: 12
         step: 1
         orientation: 'horizontal'
         size_hint: [None,None]
         size:(200,50)
-		pos: (260,550)
+		pos: (260,520)
 
     Label:
         text: "Month : " + str(int(month_cursor.value))
@@ -34,25 +34,7 @@
         bold: True
         size_hint: [None,None]
         size:(350,180)
-        pos: (330,485)
-    
-    Slider:
-        id: contamination_cursor
-        min: 0.05
-        max: 1
-        step: 0.05
-        orientation: 'horizontal'
-        size_hint: [None,None]
-        size:(200,50)
-		pos: (260,515)
-
-    Label:
-        text: "Contamination rate : " + str(round(float(contamination_cursor.value),2))
-        color: 1,0.5,0,1
-        bold: True
-        size_hint: [None,None]
-        size:(350,180)
-        pos: (360,450)
+        pos: (330,450)
     
     Label:
         id: reponse

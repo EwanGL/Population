@@ -20,7 +20,7 @@ class MyInterface(FloatLayout):
         self.healthy_carrier = int(0.25*self.infected)
         
         with self.canvas:
-            Color(1., 0, 0)
+            
             Rectangle(pos = self.pos, size=(800,500))
 
         for _ in range(self.people):

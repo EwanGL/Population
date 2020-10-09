@@ -23,8 +23,8 @@ def inhabitants(month, contamination=1):
     (-48790, 720631, 36980)
     '''
     if month == 0:
-        return (25,1,0,0)
-
+        return (25,1,0)
+    
     h, i, d = inhabitants(month-1, contamination)
 
     return (math.floor(h * 1.2 - 2 - d), math.floor(i*(1+contamination)-d), math.floor(i*0.1))

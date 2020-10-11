@@ -1,7 +1,25 @@
+# <Widget>:
+#     canvas.after:
+#         Line:
+#             rectangle: self.x+1, self.y+1, self.width-1, self.height-1
+#             dash_offset: 5
+#             dash_length: 3
+
+# <GridLayout>:
+#     canvas.after:
+#         Color:
+#             rgb: 1, 0, 0
+#         Line:
+#             rectangle: self.x+1, self.y+1, self.width-1, self.height-1
+#             dash_offset: 5
+#             dash_length: 3
+#         Color:
+#             rgb: 1, 1, 1
+
 <MyInterface>:
     canvas:
         Color:
-            rgb: [1, 0, 0]
+            rgb: [1, 1, 1]
         Rectangle:
             pos: (0, 0)
             size:(self.width,self.height*0.8)
@@ -9,11 +27,11 @@
 	Button:
         text: "Lauch COVID-21"
         # for the joke, I call this epidemic, COVID-21
-        pos: (10,510)
         color: 0, 0, 0, 1
         bold: False
-        size_hint: [0.25,0.10]
-        size:(150,100)
+        size_hint: [0.25, 0.18]
+        pos_hint: {"x": 0, "top":1}
+        # size:(150,100)
         background_normal:"button_green.png"
 		background_down:"button_blue.png"
         on_press: root.cliquer()
@@ -24,43 +42,43 @@
         max: 12
         step: 1
         orientation: 'horizontal'
-        size_hint: [None,None]
-        size:(200,50)
-		pos: (260,520)
+        size_hint: [0.25, 0.18]
+        # size:(200,50)
+		pos_hint: {"x":0.35, "top":1}
 
     Label:
         text: "Month : " + str(int(month_cursor.value))
         color: 1,0.5,0,1
         bold: True
-        size_hint: [None,None]
-        size:(350,180)
-        pos: (330,450)
+        size_hint: [0.15, 0.1]
+        # size:(350,180)
+        pos_hint: {"x":0.60, "top":0.96}
     
     Label:
         id: reponse
         color: 1,0.5,0,1
         bold: True
-        size_hint: [None,None]
-        size:(350,180)
-        pos: (550,500)
+        size_hint: [0.12, 0.05]
+        # size:(350,180)
+        pos_hint: {"x":0.85, "top":1}
     Label:
         id: sick
         color: 1,0.5,0,1
         bold: True
-        size_hint: [None,None]
-        size: (350,180)
-        pos: (550, 475)
+        size_hint: [0.12, 0.05]
+        # size: (350,180)
+        pos_hint: {"x":0.85, "top":0.95}
     Label:
         id: healthy_carrier
         color: 1,0.5,0,1
         bold: True
-        size_hint: [None,None]
-        size: (350,180)
-        pos: (550, 450)
+        size_hint: [0.12, 0.05]
+        # size: (350,180)
+        pos_hint: {"x":0.85, "top":0.90}
     Label:
         id: infected
         color: 1,0.5,0,1
         bold: True
-        size_hint: [None,None]
-        size: (350,180)
-        pos: (550, 425)
+        size_hint: [0.12, 0.05]
+        # size: (350,180)
+        pos_hint: {"x":0.85, "top":0.85}

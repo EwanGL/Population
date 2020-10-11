@@ -20,14 +20,13 @@ class MyInterface(FloatLayout):
         self.healthy_carrier = int(0.25*self.infected)
         
         with self.canvas:
-            
-            Rectangle(pos = self.pos, size=(800,500))
+            Rectangle(pos = self.pos, size=(self.width,self.height*0.8))
 
         for _ in range(self.people):
             Person(self.canvas, self)
         
         self.ids.reponse.text = str(self.people) + " inhabitants"
-        self.ids.sick.text = str(self.sick) + " sick"
+        self.ids.sick.text = str(self.sick) + " sicks"
         self.ids.healthy_carrier.text = str(self.healthy_carrier) + " healthy carrier"
         self.ids.infected.text = str(self.infected) + " infected"
 

@@ -5,7 +5,7 @@
 import doctest
 import math
 
-def inhabitants(month, contamination=1):
+def inhabitants(month, contamination=0.5):
     '''
     A village has 25 inhabitants, 
     after each month the number of inhabitants increases by 20% (is multiplied by 1.2)
@@ -20,12 +20,12 @@ def inhabitants(month, contamination=1):
     >>> inhabitants(5)
     (46, 32, 1)
     >>> inhabitants(20)
-    (-48790, 720631, 36980)
+    (-39266, 794244, 30364)
     '''
     if month == 0:
         return (25,1,0)
     
-    h, i, d = inhabitants(month-1, contamination)
+    h, i, d = inhabitants(month-1)
 
-    return (math.floor(h * 1.2 - 2 - d), math.floor(i*(1+contamination)-d), math.floor(i*0.1))
+    return (math.floor(h * 1.2 - 2 - d), math.floor(i*2-d), math.floor(0.75*i*0.02))
 doctest.testmod()

@@ -1,5 +1,6 @@
 import sys
 import random
+import math
 from kivy.app import App
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.widget import Widget
@@ -7,7 +8,7 @@ from kivy.graphics import Rectangle, Color
 import calculs
 
 class MyInterface(FloatLayout):
-
+    
     def cliquer(self):
         self.month = self.ids.month_cursor.value
         self.people, self.infected, useless = calculs.inhabitants(self.month)
@@ -22,8 +23,12 @@ class MyInterface(FloatLayout):
         with self.canvas:
             Rectangle(pos = self.pos, size=(self.width,self.height*0.8))
 
-        for _ in range(self.people):
-            Person(self.canvas, self)
+        for _ in range(self.sick+1):
+            Person(self.canvas, self, "perso_sick.png")
+        for _ in range(self.healthy_carrier+1):
+            Person(self.canvas, self, "healthy_carrier.png")
+        for _ in range(self.people+1-self.infected+1):
+            Person(self.canvas, self, "perso.png")
         
         self.ids.reponse.text = str(self.people) + " inhabitants"
         self.ids.sick.text = str(self.sick) + " sicks"
@@ -31,12 +36,12 @@ class MyInterface(FloatLayout):
         self.ids.infected.text = str(self.infected) + " infected"
 
 class Person(Widget):
-    def __init__(self, canvas, interface):
+    def __init__(self, canvas, interface, image):
         self.canvas = canvas
         self.pos = [random.randint(1,interface.size[0]-30), random.randint(1,interface.size[1]*0.8-55)]
 
         with self.canvas:
-            Rectangle(source='perso.png', pos = self.pos, size=(30,55))
+            Rectangle(source=image, pos = self.pos, size=(30,55))
 
 class PopulationApp(App):
 
